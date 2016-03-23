@@ -5,26 +5,43 @@ import java.util.Scanner;
 
 public class checkPermutation {
 	
-	public static char[] sorting(String s)
+	static String input1;
+	static String input2;
+	
+	public static String sorting(String s)
 	{
 		char[] st1 = s.toCharArray();
 		Arrays.sort(st1);
-		return st1;
+		return new String(st1);
 	}
 	
-	public static boolean permutationMap(char[] input1, char[] input2)
+	public static void permutation()
+	{
+		input1 = sorting(input1);
+		input2 = sorting(input2);
+		
+		if(input1.equals(input2))
+		{
+			System.out.println("permutation");
+		}
+	}
+	
+	public static boolean permutationMap()
 	{
 		int[] data = new int[128];
-		for(int i = 0; i < input1.length; i++)
+		char[] data1 = input1.toCharArray();
+		for(char c: data1)
 		{
-			data[input1[i]]++;
+			data[c]++;
 		}
-		for(int i = 0; i < input2.length; i++)
+		
+		for(int i = 0; i < input2.length(); i++)
 		{
-			data[input2[i]]--;
-			if(data[input2[i]] == -1)
+			int c = (int) input2.charAt(i);
+			data[c]--;
+			if(data[c] < 0)
 			{
-				System.out.println("not permutation");
+				System.out.println("Not permutaion");
 				return false;
 			}
 		}
@@ -32,43 +49,22 @@ public class checkPermutation {
 		return true;
 	}
 	
-	public static boolean permutation(char[] data1, char[] data2)
-	{
-		if(data1.length != data2.length)
-		{
-			System.out.println("Not permutation");
-			return false;
-		}
-		for(int i = 0; i < data1.length; i++)
-		{
-			if(data1[i] != data2[i])
-			{
-				System.out.println("Not permutation");
-				return false;
-			}
-		}
-		return true;
-		
-	}
+	
 	
 	public static void main(String[] args) 
 	{
 		Scanner sc = new Scanner(System.in);
-		
+		System.out.println("Enter the no. of operations");
+		int n = sc.nextInt();
+		sc.nextLine();
 		while(true){
-			String input1 = sc.nextLine();
-			String input2 = sc.nextLine();
-			input1 = input1.replaceAll(" ", "");
-			input2 = input2.replaceAll(" ", "");
-			char[] data1 = sorting(input1);
-			char[] data2 = sorting(input2);
-			if(permutation(data1, data2))
-			{
-				System.out.println("Pemutation");
-			}
-			if(permutationMap(data1, data2)){
-				
-			}
+			System.out.println("Enter first string");
+			input1 = sc.nextLine();
+			System.out.println("Enter second String");
+			input2 = sc.nextLine();
+			permutation(); // myMethod
+			permutationMap(); // BookMethod
+			
 		}
 				
 	}

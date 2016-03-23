@@ -5,15 +5,45 @@ import java.util.Map.Entry;
 import java.util.Scanner;
 
 public class Palindrome {
-	
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		String input1 = sc.nextLine();
+
+	static String input1;
+
+
+	public static boolean isPalin_optimal()
+	{
+		int odd = 0;
+		char[] data1 = input1.toCharArray();
+		int[] result = new int[Character.getNumericValue('z') - Character.getNumericValue('a') + 1];
+		for(char c : data1)
+		{
+			if(c == ' ')
+			{
+				continue;
+			}
+			int i = Character.getNumericValue(c) - Character.getNumericValue('a');
+
+			result[i]++;
+			if(result[i] % 2 == 1)
+			{
+				odd++;
+			}
+			else
+			{
+				odd--;
+			}
+
+
+		}
+		return odd <= 1;
+	}
+
+	public static boolean isPalin_permu()
+	{
 		HashMap<Character, Integer> map = new HashMap<Character, Integer>();
 		char[] data1 = input1.toCharArray();
 		boolean oddFlag = false;
 		int count = 0;
-		for(int i = 0;i < input1.length(); i++)
+		for(int i = 0; i < input1.length(); i++)
 		{
 			int i1 = 0;
 			if(data1[i] == ' ')
@@ -27,8 +57,9 @@ public class Palindrome {
 			map.put(data1[i], i1 + 1);
 			count++;
 		}
-		
+
 		System.out.println(map);
+		System.out.println(count);
 		if( count % 2 == 0)
 		{
 			for( Integer i : map.values())
@@ -36,28 +67,38 @@ public class Palindrome {
 				if(i % 2 == 1)
 				{
 					System.out.println("Not permutation");
-					System.exit(0);
+					return false;
 				}
 			}
-			
+
 		}
 		else
 		{
-			int oddCount = 0;
-			int evenCount = 0;
 			for( Integer i : map.values())
 			{
 				if(i % 2 == 1)
 				{
-					oddCount++;
+					if(oddFlag != true)
+					{
+						oddFlag = true;
+					}
+					else
+					{
+						return false;
+					}
 				}
 			}
-			if(oddCount % 2 == 1)
-			{
-				System.out.println("not permutation");
-				System.exit(0);
-			}
+
 		}
-		System.out.println("permutation");
+		return true;
+	}
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		input1 = sc.nextLine();
+
+		System.out.println(isPalin_permu());
+		System.out.println(isPalin_optimal());
+		sc.close();
 	}
 }

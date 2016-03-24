@@ -1,8 +1,6 @@
-package arrays_strings;
+package ArraysAndStrings;
 import java.util.HashMap;
 import java.util.Scanner;
-
-import javax.print.attribute.HashAttributeSet;
 
 public class isUnique {
 	

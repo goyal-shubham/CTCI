@@ -1,4 +1,4 @@
-package arrays_strings;
+package ArraysAndStrings;
 
 /**
  * Created by shubhamgoyal on 3/22/16.

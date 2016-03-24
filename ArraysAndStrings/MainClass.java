@@ -1,4 +1,4 @@
-package arrays_strings;
+package ArraysAndStrings;
 
 public class MainClass {
 

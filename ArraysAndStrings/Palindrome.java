@@ -1,7 +1,6 @@
-package arrays_strings;
+package ArraysAndStrings;
 
 import java.util.HashMap;
-import java.util.Map.Entry;
 import java.util.Scanner;
 
 public class Palindrome {

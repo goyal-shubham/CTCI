@@ -25,7 +25,6 @@ public class LL_Basic {
             System.out.println(temp.data);
             temp = temp.next;
         }
-        System.out.println(temp.data);
     }
 
     public void insert(int data)
@@ -53,22 +52,44 @@ public class LL_Basic {
             System.out.println("Empty list");
             return;
         }
-        if(temp.data == data)
+        if(root.data == data)
         {
-            //temp.next;
+            root = root.next;
+            return;
         }
-        while(temp != null)
+        LL_node temp1 = root.next;
+        while(temp1 != null)
         {
-            if(temp.data == data)
+            if(temp1.data == data)
             {
-              //  temp.next;
+                temp.next = temp1.next;
+                temp1.next = null;
+                return;
             }
+
             temp = temp.next;
+            temp1 = temp1.next;
+
         }
+        System.out.println("Data not found");
     }
 
     public static void main(String[] args) {
 
+        LL_Basic myLL = new LL_Basic();
+        myLL.insert(8);
+        myLL.insert(10);
+        myLL.insert(18);
+        myLL.insert(28);
+        myLL.insert(83);
+        myLL.insert(82);
+
+        myLL.printList();
+        System.out.println();
+        myLL.remove(82);
+        myLL.remove(82);
+        myLL.remove(18);
+        myLL.printList();
 
     }
 

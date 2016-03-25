@@ -1,4 +1,4 @@
-package LinkedList;
+package AdditionalQuestions;
 
 import ArraysAndStrings.PrintMatrix;
 
@@ -17,10 +17,8 @@ public class MatchMatrix {
     public void initializeMatrix()
     {
         data  = new int[n][n];
-        MyGraph = new int[n*n][n*n];
+
         result = new int[n][n];
-
-
     }
 
     boolean[][] visited = new boolean[n][n];
@@ -48,8 +46,6 @@ public class MatchMatrix {
         }
 
     }
-
-    
 
 
     public void BFS(int[][] data)
